@@ -44,6 +44,6 @@ class RecordsController < ApplicationController
 
   private
     def record_params
-      params.require(:record).permit(:name, :first_year, :webarchive, :link, :comment)
+      params.require(:record).permit(:name, :first_year, :webarchive, :link, :comment, :description)
     end
 end
