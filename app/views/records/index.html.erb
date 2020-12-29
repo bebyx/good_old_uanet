@@ -1,0 +1,31 @@
+<h1>База старих сайтів УАнету (з 1990-их)</h1>
+
+<p>Докладніше — <a href="https://bebyx.co.ua/web-archive.html" target="_blank">Старі сайти УАнету</a></p>
+
+<h2><%= link_to 'Додати новий запис', new_record_path %></h2>
+
+<table>
+  <tr>
+    <th>Назва</th>
+    <th>Рік</th>
+    <th>Веб-архів</th>
+    <th>Посилання (якщо живий)</th>
+    <th>Коментарі</th>
+    <th></th>
+  </tr>
+
+  <% @records.each do |record| %>
+    <tr>
+      <td><%= record.name %></td>
+      <td><%= record.first_year %></td>
+      <td><%= record.webarchive %></td>
+      <td><%= record.link %></td>
+      <td><%= record.comment %></td>
+      <td><%= link_to 'Show', record_path(record) %></td>
+      <td><%= link_to 'Edit', edit_record_path(record) %></td>
+      <td><%= link_to 'Destroy', record_path(record),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

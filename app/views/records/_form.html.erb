@@ -1,0 +1,33 @@
+<%= form_with model: @record, local: true do |form| %>
+
+<%= render 'shared/errors', obj: @record %>
+
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :first_year %><br>
+    <%= form.date_field :first_year %>
+  </div>
+
+  <div>
+    <%= form.label :webarchive %><br>
+    <%= form.text_area :webarchive %>
+  </div>
+
+  <div>
+    <%= form.label :link %><br>
+    <%= form.text_area :link %>
+  </div>
+
+  <div>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
