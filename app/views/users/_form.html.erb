@@ -1,4 +1,4 @@
-<%= form_with model: @user do |t| %>
+<%= form_with model: @user, local: true do |t| %>
 <%= render 'shared/errors', obj: @user %>
 
    <p>
