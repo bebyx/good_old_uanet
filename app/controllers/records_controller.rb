@@ -23,6 +23,10 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     @record.user = current_user
 
+    if current_user.admin?
+      @record.update_attribute(:approved, approve_param[:approved] => true)
+    end
+
     if @record.save
       redirect_to records_path
     else
