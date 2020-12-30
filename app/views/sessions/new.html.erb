@@ -1,0 +1,20 @@
+<h1>Log in</h1>
+
+<%= form_for(:session, url: login_path) do |t| %>
+     <p>
+       <%= t.label :email %>
+       <%= t.email_field :email, placeholder: "Enter email", autofocus: true %>
+     </p>
+
+     <p>
+       <%= t.label :password %>
+       <%= t.password_field :password, autocomplete: "off" %>
+     </p>
+
+   <p>
+          <%= t.submit("Log in") %>
+   </p>
+
+<% end %>
+
+<p>[ <%= link_to "Cancel and return", records_path %> ]</p>

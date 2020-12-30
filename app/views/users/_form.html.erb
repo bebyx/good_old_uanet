@@ -1,0 +1,27 @@
+<%= form_with model: @user do |t| %>
+<%= render 'shared/errors', obj: @user %>
+
+   <p>
+     <%= t.label :username %>
+     <%= t.text_field :username, placeholder: "Enter username", autofocus: true %>
+   </p>
+
+   <p>
+     <%= t.label :email %>
+     <%= t.email_field :email, placeholder: "Enter email", autofocus: true %>
+   </p>
+
+   <p>
+     <%= t.label :password %>
+     <%= t.password_field :password, placeholder: "Enter password" %>
+   </p>
+
+   <p>
+     <%= t.submit(@user.new_record? ? "Sign up" : "Update user") %>
+   </p>
+
+<% end %>
+
+<div class="center">
+   [ <%= link_to "Cancel and return", records_path %> ]
+</div>

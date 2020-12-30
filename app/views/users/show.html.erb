@@ -1,12 +1,12 @@
-<h1>База старих сайтів УАнету (з 1990-их)</h1>
+<h1>Сторінка користувача <u><%= @user.username %></u></h1>
 
-<p>Докладніше — <a href="https://bebyx.co.ua/web-archive.html" target="_blank">Старі сайти УАнету</a></p>
+<p><%= link_to 'Додати новий запис', new_record_path %></p>
 
-<p><%= link_to 'Sign up', '/uanet/signup' %></p>
-<p><%= link_to 'Log in', login_path %></p>
+<p><%= link_to 'До списку записів', records_path %></p>
+
 <p><%= link_to 'Logout', logout_path, method: :delete %></p>
 
-<h2><%= link_to 'Додати новий запис', new_record_path %></h2>
+<p>Додане користувачем:</p>
 
 <table>
   <tr>
@@ -18,14 +18,13 @@
     <th></th>
   </tr>
 
-  <% @records.each do |record| %>
+  <% @user_records.each do |record| %>
     <tr>
       <td><%= record.name %></td>
       <td><%= record.first_year %></td>
       <td><%= record.webarchive %></td>
       <td><%= record.link %></td>
       <td><%= record.comment %></td>
-      <td><%= User.find(record.user_id).username %></td>
       <td><%= link_to 'Show', record_path(record) %></td>
       <td><%= link_to 'Edit', edit_record_path(record) %></td>
       <td><%= link_to 'Destroy', record_path(record),
@@ -33,4 +32,3 @@
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
-</table>

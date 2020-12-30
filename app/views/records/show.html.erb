@@ -8,4 +8,6 @@
 
 <p><%= @record.comment %></p>
 
-<p><%= @record.description %></p>
+<p><%= markdown(@record.description) %></p>
+
+<p><%= link_to 'До списку записів', records_path %></p>
