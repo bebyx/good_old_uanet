@@ -10,4 +10,14 @@
 
 <p><%= markdown(@record.description) %></p>
 
+<% if logged_in? && (@record.user == current_user || current_user.admin?) %>
+  <%= link_to "Редагувати", edit_record_path(@record) %>
+<% end %>
+<% if logged_in? && current_user.admin? %>
+  <%= link_to "Видалити", record_path(@record),
+                             method: :delete,
+                             data: {confirm: "Точно видалити?"} %>
+<% end %>
+
+
 <p><%= link_to 'До списку записів', records_path %></p>

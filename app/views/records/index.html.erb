@@ -2,11 +2,14 @@
 
 <p>Докладніше — <a href="https://bebyx.co.ua/web-archive.html" target="_blank">Старі сайти УАнету</a></p>
 
-<p><%= link_to 'Sign up', '/uanet/signup' %></p>
-<p><%= link_to 'Log in', login_path %></p>
-<p><%= link_to 'Logout', logout_path, method: :delete %></p>
+<% if logged_in? %>
+  <p><%= link_to "User #{current_user.username}", user_path(current_user) %> — <%= link_to 'Logout', logout_path, method: :delete %></p>
+  <p><b><%= link_to 'Додати новий запис', new_record_path %></b></p>
+<% else %>
+  <p><%= link_to 'Залогіньтеся', login_path %> чи <%= link_to 'зареєструйтеся', '/uanet/signup' %>, щоб додати новий запис</p>
+<% end %>
 
-<h2><%= link_to 'Додати новий запис', new_record_path %></h2>
+<h2>Список сайтів</h2>
 
 <table>
   <tr>
@@ -15,22 +18,34 @@
     <th>Веб-архів</th>
     <th>Посилання (якщо живий)</th>
     <th>Коментарі</th>
-    <th></th>
+    <th>Ким</th>
+    <th>Коли</th>
   </tr>
 
   <% @records.each do |record| %>
     <tr>
       <td><%= record.name %></td>
-      <td><%= record.first_year %></td>
+      <td><%= record.first_year.strftime('%Y') %></td>
       <td><%= record.webarchive %></td>
       <td><%= record.link %></td>
       <td><%= record.comment %></td>
-      <td><%= User.find(record.user_id).username %></td>
-      <td><%= link_to 'Show', record_path(record) %></td>
-      <td><%= link_to 'Edit', edit_record_path(record) %></td>
-      <td><%= link_to 'Destroy', record_path(record),
+      <td>
+        <%=
+          record_user = User.find(record.user_id)
+          link_to record_user.username, user_path(record_user)
+          %>
+      </td>
+      <td><%= record.created_at.strftime('%Y-%m-%d') %></td>
+      <td><%= link_to 'Докладніше', record_path(record) %></td>
+
+      <% if logged_in? && (record.user == current_user || current_user.admin?) %>
+        <td><%= link_to 'Редагувати', edit_record_path(record) %></td>
+      <% end %>
+      <% if logged_in? && current_user.admin? %>
+        <td><%= link_to 'Видалити', record_path(record),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Точно видалити?' } %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
