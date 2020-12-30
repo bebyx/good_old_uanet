@@ -49,3 +49,7 @@
     </tr>
   <% end %>
 </table>
+
+<% if logged_in? && current_user.admin? %>
+  <p><%= link_to 'Користувачі', users_path %></p>
+<% end %>
