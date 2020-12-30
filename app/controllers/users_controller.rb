@@ -40,7 +40,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_records = Record.where(user_id: @user.id)
+    user_records = Record.where(user_id: @user.id)
+    @approved_records = user_records.where(approved: true)
+    @pending_records = user_records.where(approved: false)
   end
 
   def admin
