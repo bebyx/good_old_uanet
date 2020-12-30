@@ -1,0 +1,10 @@
+<% @pending_records.each do |record| %>
+
+  <p><%= record.name %> — <%= link_to 'Approve', records_approve_path(record),
+          method: :patch,
+          data: { confirm: 'Approve?' } %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Назад', records_path %>

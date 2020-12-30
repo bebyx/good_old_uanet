@@ -52,4 +52,5 @@
 
 <% if logged_in? && current_user.admin? %>
   <p><%= link_to 'Користувачі', users_path %></p>
+  <p><%= link_to 'Модерувати нові записи', admin_path %>
 <% end %>

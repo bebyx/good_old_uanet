@@ -1,12 +1,12 @@
 class RecordsController < ApplicationController
 
-  before_action :set_record, only: [:edit, :update, :show, :destroy]
+  before_action :set_record, only: [:edit, :update, :show, :destroy, :approve]
   before_action :require_user, except: [:index, :show]
   before_action :require_same_user, only: [:edit, :update]
-  before_action :require_admin, only: [:destroy]
+  before_action :require_admin, only: [:destroy, :approve]
 
   def index
-    @records = Record.all
+    @records = Record.where(approved: true)
   end
 
   def show
@@ -38,6 +38,12 @@ class RecordsController < ApplicationController
     end
   end
 
+  def approve
+    @record.update_attribute(:approved, approve_param[:approved] => true)
+
+    redirect_to admin_path
+  end
+
   def destroy
     @record.destroy
 
@@ -46,7 +52,11 @@ class RecordsController < ApplicationController
 
   private
     def record_params
-      params.require(:record).permit(:name, :first_year, :webarchive, :link, :comment, :description)
+      params.require(:record).permit(:name, :first_year, :webarchive, :link, :comment, :description, :approved)
+    end
+
+    def approve_param
+      params.permit(:record)
     end
 
     def set_record
@@ -62,7 +72,7 @@ class RecordsController < ApplicationController
 
     def require_admin
       if !current_user.admin?
-        flash[:danger] = "Only admins can delete users"
+        flash[:danger] = "Only admins can delete or approve records"
         redirect_to records_path
       end
     end

@@ -43,6 +43,10 @@ class UsersController < ApplicationController
     @user_records = Record.where(user_id: @user.id)
   end
 
+  def admin
+    @pending_records = Record.where(approved: false)
+  end
+
   def destroy
     @user.destroy
     flash[:danger] = "User has been deleted"
