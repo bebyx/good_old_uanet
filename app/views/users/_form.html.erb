@@ -16,6 +16,10 @@
      <%= t.password_field :password, placeholder: "Enter password" %>
    </p>
 
+   <% if current_page?(controller: 'users', action: 'new') %>
+    <p><%= recaptcha_tags %></p>
+   <% end %>
+
    <p>
      <%= t.submit(@user.new_record? ? "Sign up" : "Update user") %>
    </p>
