@@ -69,14 +69,14 @@ class RecordsController < ApplicationController
 
     def require_same_user
      if current_user != @record.user && !current_user.admin?
-        flash[:danger] = "You can manage your articles only"
+        flash[:alert] = "Ви можете редагувати тільки власні записи."
         redirect_to records_path
      end
     end
 
     def require_admin
       if !current_user.admin?
-        flash[:danger] = "Only admins can delete or approve records"
+        flash[:alert] = "Тільки адміни можуть це робити."
         redirect_to records_path
       end
     end

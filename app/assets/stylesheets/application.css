@@ -21,3 +21,11 @@ table, th, td {
 th, td {
   padding: 3px;
 }
+
+.notice {
+  color: green;
+}
+
+.alert {
+  color: red;
+}

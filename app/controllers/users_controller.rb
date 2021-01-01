@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if verify_recaptcha(model: @user) && @user.save
         session[:user_id] = @user.id
-        flash[:success] = "Welcome to Alpha Blog #{@user.username}"
+        flash[:notice] = "Ласкаво просимо!"
         redirect_to user_path(@user)
     else
         render 'new'
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def update
 
     if @user.update(user_params)
-      flash[:success] = "User info was successfully updated"
+      flash[:notice] = "Дані користувача оновлено."
       redirect_to records_path
     else
       render 'edit'
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:danger] = "User has been deleted"
+    flash[:alert] = "Користувача видалено."
     redirect_to users_path
   end
 
@@ -67,21 +67,21 @@ class UsersController < ApplicationController
 
   def require_same_user
     if current_user != @user && !current_user.admin?
-      flash[:danger] = "You can manage your profile only"
-      redirect_to root_path
+      flash[:alert] = "Ви можете редагувати тільки свій профіль."
+      redirect_to user_path(@user)
     end
   end
 
   def require_no_user
     if logged_in?
-      flash[:danger] = "Log out before signing up a new user"
+      flash[:alert] = "Ви вже маєте один акаунт. Його можна оновити."
       redirect_to records_path
     end
   end
 
   def require_admin
     if !current_user.admin?
-      flash[:danger] = "Only admins can delete users"
+      flash[:alert] = "Тільки адміни можуть видаляти користувачів."
       redirect_to records_path
     end
   end
