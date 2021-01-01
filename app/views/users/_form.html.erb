@@ -3,25 +3,25 @@
 
    <p>
      <%= t.label :username %>
-     <%= t.text_field :username, placeholder: "Enter username", autofocus: true %>
+     <%= t.text_field :username, placeholder: "Введіть псевдо", autofocus: true %>
    </p>
 
    <p>
      <%= t.label :email %>
-     <%= t.email_field :email, placeholder: "Enter email", autofocus: true %>
+     <%= t.email_field :email, placeholder: "Введіть емейл", autofocus: true %>
    </p>
 
    <p>
      <%= t.label :password %>
-     <%= t.password_field :password, placeholder: "Enter password" %>
+     <%= t.password_field :password, placeholder: "Введіть пароля" %>
    </p>
 
-   <% if current_page?(controller: 'users', action: 'new') %>
-    <p><%= recaptcha_tags %></p>
+   <% if !logged_in? %>
+    <p><%= recaptcha_tags hl: 'uk' %></p>
    <% end %>
 
    <p>
-     <%= t.submit(@user.new_record? ? "Sign up" : "Update user") %>
+     <%= t.submit(@user.new_record? ? "Зареєструватися" : "Оновити дані користувача") %>
    </p>
 
 <% end %>

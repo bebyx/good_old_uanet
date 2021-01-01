@@ -1,0 +1,6 @@
+uk:
+  hello: "Вітаю, світе!"
+  recaptcha:
+    errors:
+      verification_failed: 'reCAPTCHA хибна, будь ласка спробуйте ще.'
+      recaptcha_unreachable: 'Сервер reCAPTCHA видав помилку, будь ласка спробуйте ще раз пізніше.'

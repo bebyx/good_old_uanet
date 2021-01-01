@@ -3,7 +3,7 @@
 <p><%= link_to 'До повного списку записів', records_path %></p>
 
 <% if logged_in? && @user == current_user %>
-  <p><%= link_to 'Logout', logout_path, method: :delete %></p>
+  <p><%= link_to 'Редагувати профіль', edit_user_path %> — <%= link_to 'Вилогінитись', logout_path, method: :delete %></p>
 
   <p><b><%= link_to 'Додати новий запис', new_record_path %></b></p>
 <% end %>

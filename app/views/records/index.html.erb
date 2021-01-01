@@ -3,7 +3,7 @@
 <p>Докладніше — <a href="https://bebyx.co.ua/web-archive.html" target="_blank">Старі сайти УАнету</a></p>
 
 <% if logged_in? %>
-  <p><%= link_to "User #{current_user.username}", user_path(current_user) %> — <%= link_to 'Logout', logout_path, method: :delete %></p>
+  <p><%= link_to "Користувач #{current_user.username}", user_path(current_user) %> — <%= link_to 'Вилогінитись', logout_path, method: :delete %></p>
   <p><b><%= link_to 'Додати новий запис', new_record_path %></b></p>
 <% else %>
   <p><%= link_to 'Залогіньтеся', login_path %> чи <%= link_to 'зареєструйтеся', '/uanet/signup' %>, щоб додати новий запис</p>

@@ -1,8 +1,7 @@
 <% if obj.errors.any? %>
-  <div id="error_explanation">
+  <div>
     <h2>
-      <%= pluralize(obj.errors.count, "error") %> prohibited
-      this article from being saved:
+      Стільки хиб перешкодило дії: <%= obj.errors.count %>
     </h2>
     <ul>
       <% obj.errors.full_messages.each do |msg| %>

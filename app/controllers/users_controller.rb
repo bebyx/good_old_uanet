@@ -80,7 +80,7 @@ class UsersController < ApplicationController
   end
 
   def require_admin
-    if !current_user.admin?
+    if !logged_in? || !current_user.admin?
       flash[:alert] = "Тільки адміни можуть видаляти користувачів."
       redirect_to records_path
     end
