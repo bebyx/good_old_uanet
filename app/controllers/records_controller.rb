@@ -6,7 +6,7 @@ class RecordsController < ApplicationController
   before_action :require_admin, only: [:destroy, :approve]
 
   def index
-    @records = Record.where(approved: true)
+    @records = Record.where(approved: true).paginate(page: params[:page], per_page: 20)
   end
 
   def show

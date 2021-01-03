@@ -4,3 +4,6 @@ uk:
     errors:
       verification_failed: 'reCAPTCHA хибна, будь ласка спробуйте ще.'
       recaptcha_unreachable: 'Сервер reCAPTCHA видав помилку, будь ласка спробуйте ще раз пізніше.'
+  will_paginate:
+    next_label: "Далі →"
+    previous_label: "← Назад"

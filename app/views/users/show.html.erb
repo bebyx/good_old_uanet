@@ -8,7 +8,7 @@
   <p><b><%= link_to 'Додати новий запис', new_record_path %></b></p>
 <% end %>
 
-<p>Додане користувачем:</p>
+<h2>Додане користувачем:</h2>
 
 <table>
   <tr>
@@ -42,8 +42,10 @@
   <% end %>
 </table>
 
+<p><%= will_paginate @approved_records, param_name: :approved_page %></p>
+
 <% if @pending_records.any? && logged_in? && (@user == current_user || current_user.admin?) %>
-  <h2>Pending Records</h2>
+  <h2>Записи в пре-модерації</h2>
 
   <p>Записи на розгляді в модератора.</p>
 
@@ -76,4 +78,6 @@
     </tr>
   <% end %>
   </table>
+
+  <p><%= will_paginate @pending_records, param_name: :pending_page %></p>
 <% end %>
