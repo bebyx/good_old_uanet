@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_153244) do
 
   create_table "records", force: :cascade do |t|
     t.string "name"
-    t.date "first_year"
+    t.integer "first_year"
     t.text "webarchive"
     t.text "link"
     t.text "comment"

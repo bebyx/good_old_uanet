@@ -24,7 +24,7 @@
   <% @approved_records.each do |record| %>
     <tr>
       <td><%= record.name %></td>
-      <td><%= record.first_year.strftime('%Y') %></td>
+      <td><%= record.first_year %></td>
       <td><%= record.webarchive %></td>
       <td><%= record.link %></td>
       <td><%= record.comment %></td>
@@ -63,7 +63,7 @@
   <% @pending_records.each do |record| %>
     <tr>
       <td><%= record.name %></td>
-      <td><%= record.first_year.strftime('%Y') %></td>
+      <td><%= record.first_year %></td>
       <td><%= record.webarchive %></td>
       <td><%= record.link %></td>
       <td><%= record.comment %></td>

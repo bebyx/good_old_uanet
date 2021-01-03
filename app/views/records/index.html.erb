@@ -28,7 +28,7 @@
   <% @records.each do |record| %>
     <tr>
       <td><%= record.name %></td>
-      <td><%= record.first_year.strftime('%Y') %></td>
+      <td><%= record.first_year %></td>
       <td><%= link_to truncate(record.webarchive, length: 30), record.webarchive, target: "_blank" %></td>
       <td><%= link_to truncate(record.link, length: 50), record.link, target: "_blank" %></td>
       <td><%= record.comment %></td>
