@@ -10,7 +10,7 @@ class Record < ApplicationRecord
 
 
   def self.to_csv
-    attributes = %w{id name first_year webarchive link}
+    attributes = %w{id name first_year webarchive link comment}
 
     CSV.generate(headers: true) do |csv|
       csv << attributes
