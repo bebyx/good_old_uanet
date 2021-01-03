@@ -1,8 +1,8 @@
 <h1><%= @record.name %></h1>
 
-<p><%= @record.first_year %></p>
+<p><b>Встановлений рік народження: </b><%= @record.first_year %></p>
 
-<p><%= @record.webarchive %></p>
+<p><%= link_to 'Перший кеш вебархіву', @record.webarchive, target: "_blank" %></p>
 
 <p><%= @record.link %></p>
 

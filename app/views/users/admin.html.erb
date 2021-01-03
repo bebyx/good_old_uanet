@@ -1,8 +1,13 @@
 <% @pending_records.each do |record| %>
 
-  <p><%= record.name %> — <%= link_to 'Схвалити', records_approve_path(record),
+  <p><%= link_to record.name, record_path(record) %> —
+     <%= link_to record.user.username, user_path(record.user) %> —
+     <%= link_to 'Схвалити', records_approve_path(record),
           method: :patch,
-          data: { confirm: 'Approve?' } %>
+          data: { confirm: 'Схвалити?' } %> —
+     <%= link_to 'Видалити', record_path(record),
+          method: :destroy,
+          data: { confirm: 'Видалити?' } %>
   </p>
 
 <% end %>

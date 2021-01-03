@@ -25,8 +25,8 @@
     <tr>
       <td><%= record.name %></td>
       <td><%= record.first_year %></td>
-      <td><%= record.webarchive %></td>
-      <td><%= record.link %></td>
+      <td><%= link_to truncate(record.webarchive, length: 30), record.webarchive, target: "_blank" %></td>
+      <td><%= link_to truncate(record.link, length: 50), record.link, target: "_blank" %></td>
       <td><%= record.comment %></td>
       <td><%= record.created_at.strftime('%Y-%m-%d') %></td>
       <td><%= link_to 'Докладніше', record_path(record) %></td>
@@ -45,9 +45,7 @@
 <p><%= will_paginate @approved_records, param_name: :approved_page %></p>
 
 <% if @pending_records.any? && logged_in? && (@user == current_user || current_user.admin?) %>
-  <h2>Записи в пре-модерації</h2>
-
-  <p>Записи на розгляді в модератора.</p>
+  <h2>Записи на розгляді:</h2>
 
   <table>
     <tr>
@@ -64,8 +62,8 @@
     <tr>
       <td><%= record.name %></td>
       <td><%= record.first_year %></td>
-      <td><%= record.webarchive %></td>
-      <td><%= record.link %></td>
+      <td><%= link_to truncate(record.webarchive, length: 30), record.webarchive, target: "_blank" %></td>
+      <td><%= link_to truncate(record.link, length: 50), record.link, target: "_blank" %></td>
       <td><%= record.comment %></td>
       <td><%= record.created_at.strftime('%Y-%m-%d') %></td>
       <td><%= link_to 'Докладніше', record_path(record) %></td>

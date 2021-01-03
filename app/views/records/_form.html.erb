@@ -2,37 +2,37 @@
 
 <%= render 'shared/errors', obj: @record %>
 
-  <div>
-    <%= form.label :name %><br>
+  <p>
+    <%= form.label :name, '*Назва:' %><br>
     <%= form.text_field :name %>
-  </div>
+  </p>
 
-  <div>
-    <%= form.label :first_year %><br>
+  <p>
+    <%= form.label :first_year, '*Встановлений рік народження сайту:' %><br>
     <%= form.select :first_year, (1990)..(2005)  %>
-  </div>
+  </p>
 
-  <div>
-    <%= form.label :webarchive %><br>
+  <p>
+    <%= form.label :webarchive, '*Посилання на перший кеш вебархіву:' %><br>
     <%= form.text_area :webarchive %>
-  </div>
+  </p>
 
-  <div>
-    <%= form.label :link %><br>
+  <p>
+    <%= form.label :link, 'Посилання на сайт (якщо живий):' %><br>
     <%= form.text_area :link %>
-  </div>
+  </p>
 
-  <div>
-    <%= form.label :comment %><br>
+  <p>
+    <%= form.label :comment, 'Коментар:' %><br>
     <%= form.text_area :comment %>
-  </div>
+  </p>
 
-  <div>
-    <%= form.label :description %><br>
+  <p>
+    <%= form.label :description, 'Опис  (працює markdown):' %><br>
     <%= form.text_area :description %>
-  </div>
+  </p>
 
-  <div>
+  <p>
     <%= form.submit %>
-  </div>
+  </p>
 <% end %>

@@ -27,17 +27,12 @@
 
   <% @records.each do |record| %>
     <tr>
-      <td><%= record.name %></td>
+      <td><%= link_to record.name, record_path(record) %></td>
       <td><%= record.first_year %></td>
       <td><%= link_to truncate(record.webarchive, length: 30), record.webarchive, target: "_blank" %></td>
       <td><%= link_to truncate(record.link, length: 50), record.link, target: "_blank" %></td>
       <td><%= record.comment %></td>
-      <td>
-        <%=
-          record_user = User.find(record.user_id)
-          link_to record_user.username, user_path(record_user)
-          %>
-      </td>
+      <td><%= link_to record.user.username, user_path(record.user) %></td>
       <td><%= record.created_at.strftime('%Y-%m-%d') %></td>
       <td><%= link_to 'Докладніше', record_path(record) %></td>
 

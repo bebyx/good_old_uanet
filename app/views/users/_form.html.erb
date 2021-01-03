@@ -2,17 +2,17 @@
 <%= render 'shared/errors', obj: @user %>
 
    <p>
-     <%= t.label :username %>
+     <%= t.label :username, 'Псевдо:' %>
      <%= t.text_field :username, placeholder: "Введіть псевдо", autofocus: true %>
    </p>
 
    <p>
-     <%= t.label :email %>
+     <%= t.label :email, 'Емейл:' %>
      <%= t.email_field :email, placeholder: "Введіть емейл", autofocus: true %>
    </p>
 
    <p>
-     <%= t.label :password %>
+     <%= t.label :password, 'Пароль:' %>
      <%= t.password_field :password, placeholder: "Введіть пароля" %>
    </p>
 
