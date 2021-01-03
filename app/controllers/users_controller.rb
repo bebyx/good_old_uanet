@@ -41,8 +41,8 @@ class UsersController < ApplicationController
 
   def show
     user_records = Record.where(user_id: @user.id)
-    @approved_records = user_records.where(approved: true).paginate(page: params[:approved_page], per_page: 10)
-    @pending_records = user_records.where(approved: false).paginate(page: params[:pending_page], per_page: 5)
+    @approved_records = user_records.where(approved: true).order(created_at: :desc).paginate(page: params[:approved_page], per_page: 10)
+    @pending_records = user_records.where(approved: false).order(created_at: :desc).paginate(page: params[:pending_page], per_page: 5)
   end
 
   def admin

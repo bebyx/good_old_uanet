@@ -13,13 +13,13 @@
 
 <table>
   <tr>
-    <th>Назва</th>
-    <th>Рік</th>
+    <th><%= sortable 'name', 'Назва' %></th>
+    <th><%= sortable 'first_year', 'Рік' %></th>
     <th>Веб-архів</th>
     <th>Посилання (якщо живий)</th>
     <th>Коментарі</th>
-    <th>Ким</th>
-    <th>Коли</th>
+    <th><%= sortable 'user_id', 'Ким' %></th>
+    <th><%= sortable 'created_at', 'Коли' %></th>
     <th colspan="3">Опції</th>
   </tr>
 

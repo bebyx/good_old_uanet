@@ -4,9 +4,10 @@ class RecordsController < ApplicationController
   before_action :require_user, except: [:index, :show]
   before_action :require_same_user, only: [:edit, :update]
   before_action :require_admin, only: [:destroy, :approve]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @records = Record.where(approved: true).paginate(page: params[:page], per_page: 20)
+    @records = Record.where(approved: true).order(sort_column + ' ' + sort_direction).paginate(page: params[:page], per_page: 20)
   end
 
   def show
@@ -79,5 +80,13 @@ class RecordsController < ApplicationController
         flash[:alert] = "Тільки адміни можуть це робити."
         redirect_to records_path
       end
+    end
+
+    def sort_column
+      Record.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
     end
 end
