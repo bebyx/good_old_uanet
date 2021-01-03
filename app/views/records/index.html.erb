@@ -11,6 +11,8 @@
 
 <h2>Список сайтів</h2>
 
+<p><%= link_to "Вивантажити в CSV", records_export_path(format: "csv") %></p>
+
 <table>
   <tr>
     <th><%= sortable 'name', 'Назва' %></th>

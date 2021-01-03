@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :records, path: '/uanet/records'
   get '/uanet/records', to: redirect('/uanet')
   match '/uanet/records/:id/approve', to: 'records#approve', as: 'records_approve', via: :patch
+  get '/uanet/export', to: 'records#export', as: :records_export
 
   get '/uanet/signup', to: 'users#new', as: 'new_user'
   resources :users, except: [:new], path: '/uanet/users'

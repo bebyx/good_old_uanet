@@ -49,6 +49,14 @@ class RecordsController < ApplicationController
     redirect_to admin_path
   end
 
+  def export
+    @records = Record.where(approved: true).order(:created_at)
+    respond_to do |format|
+      format.html { redirect_to records_path }
+      format.csv { send_data @records.to_csv, filename: "records-#{Time.zone.now.to_s(:number)}.csv" }
+    end
+  end
+
   def destroy
     @record.destroy
 
