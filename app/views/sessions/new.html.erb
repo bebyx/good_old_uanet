@@ -2,17 +2,17 @@
 
 <%= form_for(:session, url: login_path) do |t| %>
      <p>
-       <%= t.label :email %>
+       <%= t.label :email, 'Емейл:' %>
        <%= t.email_field :email, placeholder: "Enter email", autofocus: true %>
      </p>
 
      <p>
-       <%= t.label :password %>
+       <%= t.label :password, 'Пароль:' %>
        <%= t.password_field :password, autocomplete: "off" %>
      </p>
 
    <p>
-          <%= t.submit("Log in") %>
+          <%= t.submit("Залогінитись") %>
    </p>
 
 <% end %>

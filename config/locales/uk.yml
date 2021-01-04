@@ -7,3 +7,8 @@ uk:
   will_paginate:
     next_label: "Далі →"
     previous_label: "← Назад"
+  helpers:
+    submit:
+      record:
+        create: "Створити запис"
+        update: "Оновити запис"
