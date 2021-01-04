@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def require_user
     if !logged_in?
-      flash[:danger] = "You need to log in to perform this action"
+      flash[:alert] = "Залогіньтеся, щоб зробити це"
       redirect_to records_path
     end
   end
