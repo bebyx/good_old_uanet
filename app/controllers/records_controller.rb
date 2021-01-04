@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
 
   before_action :set_record, only: [:edit, :update, :show, :destroy, :approve]
-  before_action :require_user, except: [:index, :show]
+  before_action :require_user, except: [:index, :show, :export]
   before_action :require_same_user, only: [:edit, :update]
   before_action :require_admin, only: [:destroy, :approve]
   helper_method :sort_column, :sort_direction
